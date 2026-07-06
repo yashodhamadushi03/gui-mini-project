@@ -2,288 +2,288 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap");
 .checkout-page {
-display: flex;
-justify-content: center;
-gap: 40px;
-min-height: calc(100vh - 70px);
-background: #f0f2f8;
-padding: 60px 40px;
-font-family: "Nunito", sans-serif;
-align-items: flex-start;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  min-height: calc(100vh - 70px);
+  background: #f0f2f8;
+  padding: 60px 40px;
+  font-family: "Nunito", sans-serif;
+  align-items: flex-start;
 }
 .cart-section {
-flex: 0 1 500px;
-max-width: 500px;
-min-width: 320px;
+  flex: 0 1 500px;
+  max-width: 500px;
+  min-width: 320px;
 }
 .cart-box {
-display: flex;
-flex-direction: column;
-gap: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 .back-link {
-font-size: 0.95rem;
-font-weight: 600;
-color: #333;
-text-decoration: none;
-display: inline-flex;
-align-items: center;
-gap: 6px;
-transition: color 0.2s;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #333;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s;
 }
 .back-link:hover {
-color: #5b5ea6;
+  color: #5b5ea6;
 }
 .back-link i {
-font-size: 0.85rem;
+  font-size: 0.85rem;
 }
 .divider {
-height: 1px;
-background: #dde1ef;
-margin: 4px 0 8px;
+  height: 1px;
+  background: #dde1ef;
+  margin: 4px 0 8px;
 }
 .cart-header h2 {
-font-size: 1.25rem;
-font-weight: 700;
-color: #222;
-margin: 0 0 4px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #222;
+  margin: 0 0 4px;
 }
 .cart-header p {
-font-size: 0.88rem;
-color: #888;
-margin: 0;
+  font-size: 0.88rem;
+  color: #888;
+  margin: 0;
 }
 .cart-items {
-display: flex;
-flex-direction: column;
-gap: 14px;
-margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 8px;
 }
 .cart-item {
-display: flex;
-align-items: center;
-gap: 16px;
-background: #fff;
-border-radius: 14px;
-padding: 14px 18px;
-box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
-transition: box-shadow 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #fff;
+  border-radius: 14px;
+  padding: 14px 18px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.2s;
 }
 .cart-item:hover {
-box-shadow: 0 4px 20px rgba(0, 0, 0, 0.09);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.09);
 }
 .item-img-wrap {
-width: 52px;
-height: 52px;
-background: #f5f6fa;
-border-radius: 10px;
-display: flex;
-align-items: center;
-justify-content: center;
-overflow: hidden;
-flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  background: #f5f6fa;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
 }
 .item-img-wrap img {
-width: 44px;
-height: 44px;
-object-fit: contain;
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
 }
 .item-name {
-flex: 1;
-font-size: 0.95rem;
-font-weight: 600;
-color: #222;
+  flex: 1;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #222;
 }
 .item-price {
-font-size: 0.95rem;
-font-weight: 700;
-color: #333;
-white-space: nowrap;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #333;
+  white-space: nowrap;
 }
 .delete-btn {
-background: none;
-border: none;
-cursor: pointer;
-color: #bbb;
-font-size: 1rem;
-padding: 4px 6px;
-border-radius: 6px;
-transition: color 0.2s, background 0.2s;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #bbb;
+  font-size: 1rem;
+  padding: 4px 6px;
+  border-radius: 6px;
+  transition: color 0.2s, background 0.2s;
 }
 .delete-btn:hover {
-color: #e55;
-background: #fff0f0;
+  color: #e55;
+  background: #fff0f0;
 }
 .payment-section {
-flex: 0 0 380px;
+  flex: 0 0 380px;
 }
 .payment-card {
-background: linear-gradient(145deg, #4b4fa8 0%, #3b3f95 60%, #343880 100%);
-border-radius: 22px;
-padding: 28px 26px 24px;
-color: #fff;
-box-shadow: 0 8px 40px rgba(59, 63, 149, 0.35);
+  background: linear-gradient(145deg, #4b4fa8 0%, #3b3f95 60%, #343880 100%);
+  border-radius: 22px;
+  padding: 28px 26px 24px;
+  color: #fff;
+  box-shadow: 0 8px 40px rgba(59, 63, 149, 0.35);
 }
 .card-title {
-font-size: 1.35rem;
-font-weight: 800;
-margin: 0 0 22px;
-letter-spacing: 0.02em;
+  font-size: 1.35rem;
+  font-weight: 800;
+  margin: 0 0 22px;
+  letter-spacing: 0.02em;
 }
 .field-group {
-margin-bottom: 16px;
+  margin-bottom: 16px;
 }
 .field-group.half {
-flex: 1;
-margin-bottom: 0;
+  flex: 1;
+  margin-bottom: 0;
 }
 .field-group label {
-display: block;
-font-size: 0.8rem;
-font-weight: 600;
-color: rgba(255, 255, 255, 0.75);
-margin-bottom: 7px;
-letter-spacing: 0.03em;
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 7px;
+  letter-spacing: 0.03em;
 }
 .card-input {
-width: 100%;
-background: rgba(255, 255, 255, 0.12);
-border: 1px solid rgba(255, 255, 255, 0.18);
-border-radius: 10px;
-padding: 11px 14px;
-font-size: 0.9rem;
-font-family: "Nunito", sans-serif;
-color: #fff;
-outline: none;
-box-sizing: border-box;
-transition: border-color 0.2s, background 0.2s;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 10px;
+  padding: 11px 14px;
+  font-size: 0.9rem;
+  font-family: "Nunito", sans-serif;
+  color: #fff;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s, background 0.2s;
 }
 .card-input::placeholder {
-color: rgba(255, 255, 255, 0.35);
+  color: rgba(255, 255, 255, 0.35);
 }
 .card-input:focus {
-border-color: rgba(255, 255, 255, 0.5);
-background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.18);
 }
 .field-row {
-display: flex;
-gap: 14px;
-margin-bottom: 16px;
+  display: flex;
+  gap: 14px;
+  margin-bottom: 16px;
 }
 .card-types {
-display: flex;
-gap: 10px;
-align-items: center;
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }
 .card-type-btn {
-width: 56px;
-height: 38px;
-background: rgba(255, 255, 255, 0.12);
-border: 2px solid transparent;
-border-radius: 8px;
-display: flex;
-align-items: center;
-justify-content: center;
-cursor: pointer;
-padding: 5px 8px;
-transition: border-color 0.2s, background 0.2s;
-overflow: hidden;
+  width: 56px;
+  height: 38px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 2px solid transparent;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 5px 8px;
+  transition: border-color 0.2s, background 0.2s;
+  overflow: hidden;
 }
 .card-type-btn img {
-width: 100%;
-height: 100%;
-object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 .card-type-btn.active {
-border-color: rgba(255, 255, 255, 0.7);
-background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.22);
 }
 .card-type-btn:hover:not(.active) {
-background: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.18);
 }
 .see-all-btn {
-background: rgba(255, 255, 255, 0.12);
-border: 2px solid transparent;
-border-radius: 8px;
-padding: 7px 14px;
-color: #fff;
-font-size: 0.82rem;
-font-family: "Nunito", sans-serif;
-font-weight: 600;
-cursor: pointer;
-transition: background 0.2s;
-white-space: nowrap;
+  background: rgba(255, 255, 255, 0.12);
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: 7px 14px;
+  color: #fff;
+  font-size: 0.82rem;
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
 }
 .see-all-btn:hover {
-background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.2);
 }
 .order-summary {
-border-top: 1px solid rgba(255, 255, 255, 0.15);
-margin: 4px 0 18px;
-padding-top: 14px;
-display: flex;
-flex-direction: column;
-gap: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  margin: 4px 0 18px;
+  padding-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 .summary-row {
-display: flex;
-justify-content: space-between;
-font-size: 0.88rem;
-color: rgba(255, 255, 255, 0.8);
-font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
 }
 .summary-row.total-row {
-color: #fff;
-font-weight: 700;
-font-size: 0.93rem;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.93rem;
 }
 .checkout-btn {
-width: 100%;
-background: linear-gradient(90deg, #3dd6b5 0%, #2bc4a1 100%);
-border: none;
-border-radius: 12px;
-padding: 14px 20px;
-display: flex;
-align-items: center;
-justify-content: space-between;
-cursor: pointer;
-transition: opacity 0.2s, transform 0.15s;
+  width: 100%;
+  background: linear-gradient(90deg, #3dd6b5 0%, #2bc4a1 100%);
+  border: none;
+  border-radius: 12px;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.15s;
 }
 .checkout-btn:hover {
-opacity: 0.92;
-transform: translateY(-1px);
+  opacity: 0.92;
+  transform: translateY(-1px);
 }
 .checkout-btn:active {
-transform: translateY(0);
+  transform: translateY(0);
 }
 .btn-amount {
-font-size: 1rem;
-font-weight: 800;
-color: #fff;
-font-family: "Nunito", sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  color: #fff;
+  font-family: "Nunito", sans-serif;
 }
 .btn-label {
-font-size: 1rem;
-font-weight: 700;
-color: #fff;
-font-family: "Nunito", sans-serif;
-display: flex;
-align-items: center;
-gap: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  font-family: "Nunito", sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 .btn-label i {
-font-size: 0.95rem;
+  font-size: 0.95rem;
 }
 @media (max-width: 900px) {
-.checkout-page {
-flex-direction: column;
-padding: 30px 24px;
-align-items: stretch;
-}
-.cart-section {
-max-width: 100%;
-}
-.payment-section {
-flex: none;
-}
+  .checkout-page {
+    flex-direction: column;
+    padding: 30px 24px;
+    align-items: stretch;
+  }
+  .cart-section {
+    max-width: 100%;
+  }
+  .payment-section {
+    flex: none;
+  }
 }

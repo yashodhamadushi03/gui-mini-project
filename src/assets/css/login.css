@@ -1,154 +1,154 @@
 * {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
 }
 .login-page {
-width: 100%;
-min-height: 100vh;
-display: flex;
-background: #dfe7f7;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    background: #dfe7f7;
 }
 .left-section {
-width: 50%;
-display: flex;
-justify-content: center;
-align-items: center;
-padding: 40px;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
 }
 .login-box {
-width: 100%;
-max-width: 420px;
+    width: 100%;
+    max-width: 420px;
 }
 .login-box h1 {
-text-align: center;
-margin-bottom: 70px;
-font-size: 40px;
-font-weight: 700;
-color: #111;
+    text-align: center;
+    margin-bottom: 70px;
+    font-size: 40px;
+    font-weight: 700;
+    color: #111;
 }
 .input-box {
-width: 100%;
-height: 65px;
-background: rgba(255, 255, 255, 0.6);
-border-radius: 18px;
-display: flex;
-align-items: center;
-padding: 0 20px;
-margin-bottom: 25px;
+    width: 100%;
+    height: 65px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    margin-bottom: 25px;
 }
 .input-box i {
-font-size: 20px;
-color: #555;
-margin-right: 15px;
+    font-size: 20px;
+    color: #555;
+    margin-right: 15px;
 }
 .input-box input {
-width: 100%;
-border: none;
-outline: none;
-background: transparent;
-font-size: 16px;
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 16px;
 }
 .btn-wrapper {
-display: flex;
-justify-content: center;
-margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
 }
 button {
-padding: 16px 50px;
-border: none;
-border-radius: 18px;
-background: linear-gradient(to right, #8e6dfd, #5a41f4);
-color: white;
-font-size: 17px;
-font-weight: 600;
-cursor: pointer;
-box-shadow: 0 10px 20px rgba(90, 65, 244, 0.3);
-transition: 0.3s;
+    padding: 16px 50px;
+    border: none;
+    border-radius: 18px;
+    background: linear-gradient(to right, #8e6dfd, #5a41f4);
+    color: white;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(90, 65, 244, 0.3);
+    transition: 0.3s;
 }
 button:hover {
-transform: scale(1.05);
+    transform: scale(1.05);
 }
 .bottom-line {
-margin-top: 60px;
-border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    margin-top: 60px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
 .right-section {
-width: 50%;
-position: relative;
-overflow: hidden;
-background: linear-gradient(135deg, #6e57f5, #5a3ef0);
-display: flex;
-justify-content: center;
-align-items: center;
+    width: 50%;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #6e57f5, #5a3ef0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .circle {
-position: absolute;
-border: 1px solid rgba(255, 255, 255, 0.15);
-border-radius: 50%;
+    position: absolute;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
 }
 .circle1 {
-width: 500px;
-height: 500px;
-top: -180px;
-left: -180px;
+    width: 500px;
+    height: 500px;
+    top: -180px;
+    left: -180px;
 }
 .circle2 {
-width: 700px;
-height: 700px;
-bottom: -300px;
-right: -300px;
+    width: 700px;
+    height: 700px;
+    bottom: -300px;
+    right: -300px;
 }
 .circle3 {
-width: 350px;
-height: 350px;
-top: 100px;
-right: 80px;
+    width: 350px;
+    height: 350px;
+    top: 100px;
+    right: 80px;
 }
 .image-card {
-position: relative;
-width: 420px;
-height: 620px;
-border-radius: 40px;
-background: rgba(255, 255, 255, 0.12);
-backdrop-filter: blur(10px);
-border: 1px solid rgba(255, 255, 255, 0.2);
-display: flex;
-justify-content: center;
-align-items: flex-end;
-overflow: hidden;
+    position: relative;
+    width: 420px;
+    height: 620px;
+    border-radius: 40px;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    overflow: hidden;
 }
 .main-image {
-margin-right:20px;
-width: 100%;
-height: 100%;
-object-fit: contain;
-transform: scale(1.5);
+    margin-right:20px;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transform: scale(1.5);
 }
 .small-circle {
-position: absolute;
-left: -30px;
-bottom: 120px;
-width: 80px;
-height: 80px;
-background: white;
-border-radius: 50%;
-display: flex;
-justify-content: center;
-align-items: center;
-font-size: 28px;
-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+    position: absolute;
+    left: -30px;
+    bottom: 120px;
+    width: 80px;
+    height: 80px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
 }
 @media (max-width: 900px) {
-.login-page {
-flex-direction: column;
-}
-.left-section,
-.right-section {
-width: 100%;
-}
-.right-section {
-min-height: 700px;
-}
+    .login-page {
+        flex-direction: column;
+    }
+    .left-section,
+    .right-section {
+        width: 100%;
+    }
+    .right-section {
+        min-height: 700px;
+    }
 }
