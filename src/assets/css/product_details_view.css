@@ -330,3 +330,66 @@
     line-height: 1.5;
     margin: 0;
 }
+.toast {
+    position: fixed;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 280px;
+    max-width: 420px;
+    padding: 14px 16px;
+    border-radius: 10px;
+    background: #17181a;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+    z-index: 1000;
+}
+.toast-icon {
+    font-size: 16px;
+    flex-shrink: 0;
+}
+.toast-message {
+    flex: 1;
+    line-height: 1.4;
+}
+.toast-close {
+    background: transparent !important;
+    border: none;
+    color: #ffffff !important;
+    opacity: 0.7;
+    cursor: pointer;
+    font-size: 13px;
+    padding: 2px 4px;
+    flex-shrink: 0;
+}
+.toast-close:hover {
+    opacity: 1;
+}
+.toast.success {
+    background: #16a675;
+}
+.toast.error {
+    background: #e63946;
+}
+.toast.info {
+    background: #17181a;
+}
+.toast-fade-enter-active,
+.toast-fade-leave-active {
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.toast-fade-enter-from,
+.toast-fade-leave-to {
+    opacity: 0;
+    transform: translateX(-50%) translateY(12px);
+}
+.toast-fade-enter-to,
+.toast-fade-leave-from {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
