@@ -155,6 +155,20 @@
         </div>
       </div>
     </div>
+
+    <!-- Message box (replaces alert) -->
+    <Transition name="msgbox-fade">
+      <div v-if="msgBox.visible" class="msgbox-overlay" @click.self="closeMsgBox">
+        <div class="msgbox" :class="msgBox.type">
+          <div class="msgbox-header">
+            <span class="msgbox-title">{{ msgBox.title }}</span>
+            <button class="msgbox-close" @click="closeMsgBox" aria-label="Close">✕</button>
+          </div>
+          <p class="msgbox-body">{{ msgBox.message }}</p>
+          <button class="msgbox-ok" @click="closeMsgBox">OK</button>
+        </div>
+      </div>
+    </Transition>
   </div>
 </template>
 
@@ -204,9 +218,25 @@ const subtotal = computed(() =>
 const shipping = computed(() => 0);
 const total = computed(() => subtotal.value + shipping.value);
 
+const msgBox = ref({
+  visible: false,
+  title: "",
+  message: "",
+  type: "success",
+});
+
+const showMsgBox = (title, message, type = "success") => {
+  msgBox.value = { visible: true, title, message, type };
+};
+
+const closeMsgBox = () => {
+  msgBox.value.visible = false;
+};
+
 const handleCheckout = () => {
-  alert("Order placed! Total: Rs " + total.value.toLocaleString());
+  const orderTotal = total.value.toLocaleString();
   cart.value.splice(0, cart.value.length);
+  showMsgBox("Order placed", "Your total was Rs " + orderTotal + ".", "success");
 };
 </script>
 
