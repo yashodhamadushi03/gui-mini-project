@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap');
+.sv-nav {
+    width: 100%;
+    background: #ffffff;
+    border-bottom: 1px solid #e5e5e5;
+    font-family: 'DM Sans', sans-serif;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.sv-nav__inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 28px;
+    height: 64px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+}
+.sv-brand {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+    user-select: none;
+}
+.sv-brand__logo {
+    height: 85px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+}
+.sv-links {
+    justify-self: center;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.sv-links__btn {
+    background: none;
+    border: none;
+    box-shadow: none;
+    outline: none;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: #333;
+    padding: 8px 20px;
+    transition: color 0.2s;
+}
+.sv-links__btn:hover {
+    color: #111;
+}
+.sv-nav__right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    justify-self: end;
+}
+.sv-cart {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.sv-cart:hover {
+    color: #111;
+}
+.sv-cart svg {
+    width: 22px;
+    height: 22px;
+}
+.sv-cart__badge {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background: #6c4ee3;
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 999px;
+    line-height: 1;
+    min-width: 16px;
+    text-align: center;
+}
+.sv-hamburger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 4px 8px;
+    color: #333;
+}
+.sv-mobile-menu {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-top: 1px solid #e5e5e5;
+    padding: 12px 20px 20px;
+    gap: 4px;
+}
+.sv-mobile-menu__btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: #333;
+    padding: 11px 14px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.sv-mobile-menu__btn:hover {
+    color: #111;
+}
+@media (max-width: 680px) {
+    .sv-links      { display: none; }
+    .sv-hamburger  { display: flex; }
+    .sv-nav__inner { height: 56px; }
+}

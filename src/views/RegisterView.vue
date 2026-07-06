@@ -5,7 +5,7 @@
     <div class="login-page">
       <div class="left-section">
         <div class="login-box">
-          <h1>LOGIN</h1>
+          <h1>REGISTER</h1>
 
           <div class="input-box">
             <i class="fa-regular fa-user"></i>
