@@ -139,11 +139,22 @@
         </div>
       </div>
     </div>
+
+    <!-- Toast / message box (replaces alert()) -->
+    <Transition name="toast-fade">
+      <div v-if="toast.visible" class="toast" :class="toast.type">
+        <span class="toast-icon">
+          {{ toast.type === 'error' ? '⚠️' : toast.type === 'success' ? '✅' : 'ℹ️' }}
+        </span>
+        <span class="toast-message">{{ toast.message }}</span>
+        <button class="toast-close" @click="hideToast" aria-label="Close">✕</button>
+      </div>
+    </Transition>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from "vue";
+import { ref, computed, onMounted, onUnmounted } from "vue";
 import { useRoute } from "vue-router";
 import ShopVueNavbar from "@/components/Navigation.vue";
 import { useCart } from "@/components/useCart";
@@ -188,10 +199,37 @@ const quantity = ref(1);
 const colorOptions = [
   { name: "Red", hex: "#ef4444" },
   { name: "Blue", hex: "#93c5fd" },
-  { name: "Pink", hex: "#facc15" },
+  { name: "Pink", hex: "#ec4899" },
 ];
 
 const sizeOptions = ["XS", "S", "M", "L", "XL"];
+
+type ToastType = "success" | "error" | "info";
+
+const toast = ref<{ visible: boolean; message: string; type: ToastType }>({
+  visible: false,
+  message: "",
+  type: "info",
+});
+
+let toastTimer: ReturnType<typeof setTimeout> | null = null;
+
+const showToast = (message: string, type: ToastType = "info", duration = 3000): void => {
+  if (toastTimer) clearTimeout(toastTimer);
+  toast.value = { visible: true, message, type };
+  toastTimer = setTimeout(() => {
+    toast.value.visible = false;
+  }, duration);
+};
+
+const hideToast = (): void => {
+  toast.value.visible = false;
+  if (toastTimer) clearTimeout(toastTimer);
+};
+
+onUnmounted(() => {
+  if (toastTimer) clearTimeout(toastTimer);
+});
 
 const fetchProduct = async (): Promise<void> => {
   loading.value = true;
@@ -243,7 +281,7 @@ const isCurrentFavourite = computed(() =>
 
 const handleAddToCart = (): void => {
   if (!selectedSize.value) {
-    alert("Please select a size first.");
+    showToast("Please select a size first.", "error");
     return;
   }
   if (!product.value) return;
@@ -260,7 +298,7 @@ const handleAddToCart = (): void => {
       quantity.value
   );
 
-  alert(`Added ${quantity.value} × ${product.value.title} to cart.`);
+  showToast(`Added ${quantity.value} × ${product.value.title} to cart.`, "success");
 };
 
 const handleToggleFavourite = (): void => {
