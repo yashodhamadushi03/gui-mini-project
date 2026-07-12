@@ -78,8 +78,8 @@
             </div>
           </div>
 
-          <!-- Size -->
-          <div class="field-group">
+          <!-- Size (clothing only) -->
+          <div class="field-group" v-if="isClothingCategory">
             <div class="size-row">
               <label class="field-label">Size</label>
               <a href="#" class="size-chart-link">📏 Size chart</a>
@@ -204,6 +204,20 @@ const colorOptions = [
 
 const sizeOptions = ["XS", "S", "M", "L", "XL"];
 
+const CLOTHING_CATEGORIES = [
+  "mens-shirts",
+  "mens-shoes",
+  "womens-dresses",
+  "womens-shoes",
+  "tops",
+  "womens-jewellery",
+  "sunglasses",
+];
+
+const isClothingCategory = computed(() =>
+    product.value ? CLOTHING_CATEGORIES.includes(product.value.category) : false
+);
+
 type ToastType = "success" | "error" | "info";
 
 const toast = ref<{ visible: boolean; message: string; type: ToastType }>({
@@ -280,7 +294,7 @@ const isCurrentFavourite = computed(() =>
 );
 
 const handleAddToCart = (): void => {
-  if (!selectedSize.value) {
+  if (isClothingCategory.value && !selectedSize.value) {
     showToast("Please select a size first.", "error");
     return;
   }
@@ -292,7 +306,7 @@ const handleAddToCart = (): void => {
         title: product.value.title,
         price: discountedPrice.value,
         thumbnail: product.value.thumbnail,
-        size: selectedSize.value,
+        size: isClothingCategory.value ? selectedSize.value : undefined,
         color: selectedColor.value,
       },
       quantity.value

@@ -53,7 +53,7 @@
         </div>
       </div>
 
-      <div class="payment-section">
+      <div class="payment-section" v-if="cart.length > 0">
         <div class="payment-card">
           <h2 class="card-title">Card Details</h2>
 
@@ -79,56 +79,72 @@
                   :class="{ active: selectedCard === 'rupay' }"
                   @click="selectedCard = 'rupay'"
               >
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/250px-PayPal.svg.png?_=20241230110020" alt="RuPay" />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/250px-PayPal.svg.png?_=20241230110020" alt="PayPal" />
               </button>
               <button class="see-all-btn">See all</button>
             </div>
           </div>
 
-          <div class="field-group">
-            <label>Name on card</label>
-            <input
-                v-model="cardName"
-                type="text"
-                placeholder="Name"
-                class="card-input"
-            />
-          </div>
-
-          <div class="field-group">
-            <label>Card Number</label>
-            <input
-                v-model="cardNumber"
-                type="text"
-                placeholder="1111 2222 3333 4444"
-                maxlength="19"
-                @input="formatCardNumber"
-                class="card-input"
-            />
-          </div>
-
-          <div class="field-row">
-            <div class="field-group half">
-              <label>Expiration date</label>
+          <!-- Card fields (hidden for PayPal) -->
+          <template v-if="!isPaypalSelected">
+            <div class="field-group">
+              <label>Name on card</label>
               <input
-                  v-model="expiryDate"
+                  v-model="cardName"
                   type="text"
-                  placeholder="mm/yy"
-                  maxlength="5"
-                  @input="formatExpiry"
+                  placeholder="Name"
                   class="card-input"
+                  :class="{ 'input-error': fieldErrors.cardName }"
               />
+              <span v-if="fieldErrors.cardName" class="field-error">{{ fieldErrors.cardName }}</span>
             </div>
-            <div class="field-group half">
-              <label>CVV</label>
+
+            <div class="field-group">
+              <label>Card Number</label>
               <input
-                  v-model="cvv"
-                  type="password"
-                  placeholder="123"
-                  maxlength="3"
+                  v-model="cardNumber"
+                  type="text"
+                  placeholder="1111 2222 3333 4444"
+                  maxlength="19"
+                  @input="formatCardNumber"
                   class="card-input"
+                  :class="{ 'input-error': fieldErrors.cardNumber }"
               />
+              <span v-if="fieldErrors.cardNumber" class="field-error">{{ fieldErrors.cardNumber }}</span>
             </div>
+
+            <div class="field-row">
+              <div class="field-group half">
+                <label>Expiration date</label>
+                <input
+                    v-model="expiryDate"
+                    type="text"
+                    placeholder="mm/yy"
+                    maxlength="5"
+                    @input="formatExpiry"
+                    class="card-input"
+                    :class="{ 'input-error': fieldErrors.expiryDate }"
+                />
+                <span v-if="fieldErrors.expiryDate" class="field-error">{{ fieldErrors.expiryDate }}</span>
+              </div>
+              <div class="field-group half">
+                <label>CVV</label>
+                <input
+                    v-model="cvv"
+                    type="password"
+                    placeholder="123"
+                    maxlength="3"
+                    class="card-input"
+                    :class="{ 'input-error': fieldErrors.cvv }"
+                />
+                <span v-if="fieldErrors.cvv" class="field-error">{{ fieldErrors.cvv }}</span>
+              </div>
+            </div>
+          </template>
+
+          <!-- PayPal notice -->
+          <div v-else class="paypal-notice">
+            You'll be redirected to PayPal to complete your payment securely.
           </div>
 
           <div class="order-summary">
@@ -173,11 +189,13 @@
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
+import { ref, reactive, computed } from "vue";
+import { useRouter } from "vue-router";
 import ShopVueNavbar from "@/components/Navigation.vue";
 import { useCart } from "@/components/useCart";
 import "@/assets/css/checkout.css";
 
+const router = useRouter();
 const { cart, removeFromCart } = useCart();
 
 const incrementQty = (index) => {
@@ -197,6 +215,17 @@ const cardName = ref("");
 const cardNumber = ref("");
 const expiryDate = ref("");
 const cvv = ref("");
+
+// The third "card type" button uses the PayPal logo (variable name kept as
+// "rupay" from before — consider renaming to "paypal" for clarity)
+const isPaypalSelected = computed(() => selectedCard.value === "rupay");
+
+const fieldErrors = reactive({
+  cardName: "",
+  cardNumber: "",
+  expiryDate: "",
+  cvv: "",
+});
 
 const formatCardNumber = () => {
   let val = cardNumber.value.replace(/\D/g, "").substring(0, 16);
@@ -218,25 +247,99 @@ const subtotal = computed(() =>
 const shipping = computed(() => 0);
 const total = computed(() => subtotal.value + shipping.value);
 
+/* ---------------- Message box (replaces alert) ---------------- */
 const msgBox = ref({
   visible: false,
   title: "",
   message: "",
-  type: "success",
+  type: "success", // "success" | "error" | "info"
+  redirectOnClose: false,
 });
 
-const showMsgBox = (title, message, type = "success") => {
-  msgBox.value = { visible: true, title, message, type };
+const showMsgBox = (title, message, type = "success", redirectOnClose = false) => {
+  msgBox.value = { visible: true, title, message, type, redirectOnClose };
 };
 
 const closeMsgBox = () => {
+  const shouldRedirect = msgBox.value.redirectOnClose;
   msgBox.value.visible = false;
+  if (shouldRedirect) {
+    router.push("/");
+  }
 };
+/* ---------------------------------------------------------------- */
+
+/* ---------------- Card details validation ---------------- */
+const validateCardDetails = () => {
+  // No card fields to validate when paying via PayPal
+  if (isPaypalSelected.value) return true;
+
+  fieldErrors.cardName = "";
+  fieldErrors.cardNumber = "";
+  fieldErrors.expiryDate = "";
+  fieldErrors.cvv = "";
+
+  let isValid = true;
+
+  if (!cardName.value.trim()) {
+    fieldErrors.cardName = "Name on card is required.";
+    isValid = false;
+  }
+
+  const digitsOnly = cardNumber.value.replace(/\s/g, "");
+  if (!digitsOnly) {
+    fieldErrors.cardNumber = "Card number is required.";
+    isValid = false;
+  } else if (digitsOnly.length !== 16) {
+    fieldErrors.cardNumber = "Card number must be 16 digits.";
+    isValid = false;
+  }
+
+  if (!expiryDate.value) {
+    fieldErrors.expiryDate = "Expiration date is required.";
+    isValid = false;
+  } else if (!/^\d{2}\/\d{2}$/.test(expiryDate.value)) {
+    fieldErrors.expiryDate = "Use mm/yy format.";
+    isValid = false;
+  } else {
+    const [mm, yy] = expiryDate.value.split("/").map(Number);
+    const now = new Date();
+    const currentYear = now.getFullYear() % 100;
+    const currentMonth = now.getMonth() + 1;
+    if (mm < 1 || mm > 12) {
+      fieldErrors.expiryDate = "Invalid month.";
+      isValid = false;
+    } else if (yy < currentYear || (yy === currentYear && mm < currentMonth)) {
+      fieldErrors.expiryDate = "Card has expired.";
+      isValid = false;
+    }
+  }
+
+  if (!cvv.value) {
+    fieldErrors.cvv = "CVV is required.";
+    isValid = false;
+  } else if (!/^\d{3}$/.test(cvv.value)) {
+    fieldErrors.cvv = "CVV must be 3 digits.";
+    isValid = false;
+  }
+
+  return isValid;
+};
+/* ------------------------------------------------------------ */
 
 const handleCheckout = () => {
+  if (!validateCardDetails()) {
+    showMsgBox("Missing details", "Please fill in all card details correctly before checking out.", "error");
+    return;
+  }
+
   const orderTotal = total.value.toLocaleString();
   cart.value.splice(0, cart.value.length);
-  showMsgBox("Order placed", "Your total was Rs " + orderTotal + ".", "success");
+  cardName.value = "";
+  cardNumber.value = "";
+  expiryDate.value = "";
+  cvv.value = "";
+  showMsgBox("Order placed", "Your total was Rs " + orderTotal + ".", "success", true);
 };
 </script>
 
