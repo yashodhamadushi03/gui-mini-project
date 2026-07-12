@@ -55,7 +55,7 @@
     justify-content: center;
     margin-top: 40px;
 }
-button {
+.login-page button {
     padding: 16px 50px;
     border: none;
     border-radius: 18px;
@@ -66,6 +66,9 @@ button {
     cursor: pointer;
     box-shadow: 0 10px 20px rgba(90, 65, 244, 0.3);
     transition: 0.3s;
+}
+.login-page button:hover {
+    transform: scale(1.05);
 }
 button:hover {
     transform: scale(1.05);
